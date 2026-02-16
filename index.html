@@ -217,77 +217,118 @@
   .footer-links i { font-size: 1.5rem; margin: 0 15px; transition: 0.3s; color: white; cursor: pointer; }
   .footer-links i:hover { color: var(--green); transform: scale(1.2); }
 
-  /* --- RESPONSIVE "PERKECIL" MODE --- */
+  /* ========================================================= 
+     PERUBAHAN KHUSUS MOBILE (DIPERKECIL) 
+     ========================================================= */
   @media (max-width: 900px) {
-    /* Navbar Toggle */
+    /* Navbar */
     .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-align: center; }
     .nav-links.active { display: flex; }
     .mobile-toggle { display: block; }
 
-    /* 1. HERO/BANNER DIPERKECIL */
+    /* 1. BANNER / HERO JADI PERSEGI PANJANG (PENDEK) */
     .hero-creative { 
-        height: 50vh; /* Banner jadi pendek */
-        min-height: 400px; /* Minimal tinggi agar konten tidak terpotong */
-        align-items: center;
+        height: 250px; /* Diperpendek jadi persegi panjang */
+        min-height: auto;
     }
+    .hero-content { margin-top: 20px; padding: 0 10px; }
     .hero-title { 
-        font-size: 2.5rem; /* Font diperkecil drastis */
+        font-size: 1.8rem; /* Font Judul Kecil */
+        margin-bottom: 5px;
     }
     .hero-desc { 
-        font-size: 0.9rem; /* Deskripsi kecil */
-        line-height: 1.4;
-        padding: 0 10px;
+        font-size: 0.75rem; /* Deskripsi sangat kecil */
+        line-height: 1.3;
+        margin-bottom: 15px;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
-    .hero-badge {
-        padding: 5px 15px; font-size: 0.7rem; margin-bottom: 10px;
-    }
+    .hero-badge { font-size: 0.6rem; padding: 3px 10px; margin-bottom: 5px; }
+    .btn-ppdb-nav { padding: 5px 15px; font-size: 0.7rem; }
 
-    /* 2. STATISTIK DIPERKECIL TAPI TETAP KOLOM (GRID) */
-    .stats-sec { padding: 30px 5%; }
+    /* 2. STATISTIK JADI 1 BARIS, 3 KOLOM (MINIATUR) */
+    .stats-sec { padding: 20px 10px; }
     .stats-grid { 
+        display: flex; 
+        flex-wrap: nowrap; /* Paksa jangan turun baris */
+        justify-content: space-between;
+        gap: 5px;
+    }
+    .stat-item { 
+        flex-direction: column; /* Icon diatas angka */
+        gap: 2px; 
+        width: 32%; /* Bagi 3 kolom */
+        text-align: center;
+    }
+    .stat-icon { font-size: 1.2rem; margin-bottom: 0; }
+    .stat-info h4 { font-size: 1.2rem; }
+    .stat-info span { font-size: 0.5rem; line-height: 1.1; }
+
+    /* 3. PROFIL/SEJARAH JADI 2 KOLOM (MINIATUR) */
+    .history-sec { padding: 40px 10px; }
+    .intro-box { margin-bottom: 20px; }
+    .intro-box h2 { font-size: 1.5rem; }
+    .intro-box p { font-size: 0.7rem; }
+
+    .grid-history {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom kiri-kanan */
-        gap: 20px; /* Jarak dirapatkan */
-    }
-    /* Agar item ganjil (ketiga) rapi di tengah */
-    .stat-item:last-child { grid-column: span 2; justify-content: center; }
-    
-    .stat-item { flex-direction: column; text-align: center; gap: 5px; }
-    .stat-icon { font-size: 1.5rem; margin-bottom: 0; } /* Icon Kecil */
-    .stat-info h4 { font-size: 1.5rem; } /* Angka Kecil */
-    .stat-info span { font-size: 0.65rem; }
-
-    /* 3. SECTION SPACING DIPERKECIL */
-    .history-sec, .brosur-sec, .kegiatan-sec, .news-sec, footer {
-        padding: 50px 5% !important; /* Jarak atas bawah dikurangi separuh */
+        grid-template-columns: 1.2fr 0.8fr; /* Kiri Teks 1.2, Kanan Gambar 0.8 */
+        gap: 10px; 
     }
     
-    /* 4. LAYOUT CONTENT LAINNYA */
-    /* Stack menjadi 1 kolom karena teks tidak mungkin dibaca jika 2 kolom di HP */
-    .grid-history, .brosur-layout, .kegiatan-grid, .news-grid { 
-        grid-template-columns: 1fr; 
-        gap: 30px; /* Gap diperkecil */
+    /* Font Teks Sejarah Sangat Kecil biar muat */
+    .narrative-text h3 { font-size: 0.9rem !important; margin-bottom: 5px; }
+    .narrative-text p { 
+        font-size: 0.6rem; /* Font paragraf kecil */
+        line-height: 1.3;
+        margin-bottom: 10px;
+        text-align: left;
     }
+    .quote-box { padding: 10px; font-size: 0.6rem; margin-top: 5px; }
 
-    /* Gambar-gambar diperkecil */
-    .hist-img-box { height: 250px; order: -1; }
-    .hist-img-wrapper { position: static; margin-bottom: 30px; }
-    .brosur-mockup { max-width: 200px; margin: 0 auto; aspect-ratio: auto; height: auto; }
-    .brosur-right { text-align: center; }
-    .btn-reg-item { text-align: left; padding: 15px; }
-    .btn-reg-item strong { font-size: 1rem; }
+    /* Gambar Sejarah Kecil */
+    .hist-img-wrapper { margin-top: 0; position: static; }
+    .hist-img-box { height: 160px; border-radius: 10px; order: 0; }
+    .btn-struktur { font-size: 0.6rem; padding: 5px; margin-top: 5px; }
 
-    /* Header Section Kecil */
-    .intro-box h2, .brosur-right h2, .kegiatan-sec h2, .news-sec h2 {
-        font-size: 2rem !important;
-    }
-    
-    /* Ekskul Tetap Grid 3 tapi Mini */
-    .ekskul-photo-grid { 
-        grid-template-columns: repeat(3, 1fr); 
+    /* 4. BERITA JADI 2 KOLOM + SLIDER SAMPING */
+    .news-sec { padding: 30px 0 30px 15px; overflow: hidden; } /* Kanan 0 biar slider mentok */
+    .news-sec h2 { font-size: 1.5rem; padding-right: 15px; }
+
+    .news-grid {
+        display: flex; /* Flex biar bisa scroll samping */
+        grid-template-columns: none;
+        overflow-x: auto; /* Scroll Samping Aktif */
+        scroll-snap-type: x mandatory;
         gap: 10px;
+        padding-bottom: 15px;
+        padding-right: 15px;
+        margin-top: 20px;
     }
-    .ekskul-name { font-size: 0.6rem; margin-top: 5px; }
+    
+    /* Sembunyikan Scrollbar */
+    .news-grid::-webkit-scrollbar { display: none; }
+    
+    .news-card {
+        min-width: 45%; /* Muat 2 kartu di layar (45% x 2 + gap) */
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
+    
+    .news-thumb { height: 100px; }
+    .news-body { padding: 10px; }
+    .news-date { font-size: 0.5rem; }
+    .news-body h4 { font-size: 0.8rem; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .news-excerpt { display: none; } /* Hide ringkasan biar pendek */
+    .read-more { font-size: 0.6rem; }
+
+    /* Layout Lainnya Diperkecil Biasa */
+    .brosur-layout, .kegiatan-grid { grid-template-columns: 1fr; gap: 30px; }
+    .brosur-mockup { max-width: 200px; margin: 0 auto; }
+    .brosur-right { text-align: center; }
+    .brosur-right h2, .kegiatan-sec h2 { font-size: 1.5rem; }
+    .btn-reg-item { text-align: left; padding: 10px; }
+    .ekskul-photo-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+    .ekskul-name { font-size: 0.5rem; margin-top: 2px; }
   }
 </style>
 </head>
